@@ -5,14 +5,14 @@ const secretKey = jwtPassword
 
 export const jwtService = {
 
- generateToken: (payload: string | object | Buffer, expiration: string | number) => {
+ generateToken: (payload: string | object | Buffer, expiration: string ) => {
    return jwt.sign(payload, secretKey, {
-    expiresIn: typeof expiration === 'string' ? parseInt(expiration, 10) : expiration, 
+    expiresIn: expiration,
    });
  },
  
- verifyToken: (token: string, callbackfunc: jwt.VerifyCallback) => {
-  jwt.verify(token,secretKey,callbackfunc)
+ verifyToken: (token: string, callbackfn: jwt.VerifyCallback) => {
+  jwt.verify(token,secretKey,callbackfn)
  }
 
 }

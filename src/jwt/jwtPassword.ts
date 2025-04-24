@@ -1,1 +1,3 @@
-export default process.env.JWT_PASS;
+require('dotenv').config()
+
+export default process.env.JWT_PASS ;
