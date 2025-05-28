@@ -4,16 +4,17 @@ import { Request , Response } from "express"
 
 export const authController = {
   register: async (req : Request , res: Response) => {
-    const { name , email , password} = req.body
+    const { name , email , password , role, birthDate, photoUrl, verified} = req.body
 
     try {
+
       const userAlreadyExists = await userService.findByEmail(email)
 
       if ( userAlreadyExists ) {
         return res.status(409).json({message: `invalid email and/or password`})
       }
 
-      const user = await userService.save( { name , email , password })
+      const user = await userService.save( { name , email , password , role, birthDate, photoUrl, verified} )
       res.status(201).json(user) 
     } catch (error) {
 
@@ -44,7 +45,12 @@ export const authController = {
       const payLoad = {
         id: user.id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role,
+        birthDate: user.birthDate,
+        photoUrl: user.photoUrl,
+        verified: user.verified,
+
       }
 
       const token = jwtService.generateToken(payLoad , process.env.JWT_EXPIRES || '1d')

@@ -9,6 +9,10 @@ export interface User {
   name: string;
   email: string;
   password: string;
+  role : 'gestor' | 'operador' | 'externo';
+  birthDate: Date;
+  photoUrl: string;
+  verified : boolean;
 }
 
 export interface UserCreationAttributes extends Optional<User, 'id'> {}
@@ -42,6 +46,24 @@ export const User = sequelize.define<UserInstance, User>('User',{
     allowNull: false,
     type: DataTypes.STRING,
   },
+  role: {
+    allowNull: false,
+    type: DataTypes.ENUM('gestor', 'operador' , 'externo'),
+    defaultValue: 'operador',
+  },
+  birthDate: {
+    allowNull: false,
+    type: DataTypes.DATE,
+  },
+  photoUrl: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
+  verified: {
+    allowNull: false,
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 },
   {
     hooks: {
@@ -54,7 +76,7 @@ export const User = sequelize.define<UserInstance, User>('User',{
   }
 );
 
-User.prototype.checkPassword = function (
+(User as any).prototype.checkPassword = function (
   password: string,
   callbackfn: CheckPasswordCallBack
 ) {

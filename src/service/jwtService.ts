@@ -5,9 +5,9 @@ const secretKey = jwtPassword
 
 export const jwtService = {
 
- generateToken: (payload: string | object | Buffer, expiration: string ) => {
+ generateToken: (payload: string | object | Buffer, expiration: string | number ) => {
    return jwt.sign(payload, secretKey, {
-    expiresIn: expiration,
+    expiresIn: typeof expiration === 'string' ? parseInt(expiration, 10) : expiration,
    });
  },
  
