@@ -25,9 +25,9 @@ export const ReflorestationAreas = sequelize.define<ReflorestationAreasInstance,
 
   id: {
     allowNull: false,
-    autoIncrement: true,
     primaryKey:  true,
     type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4, 
   },
   name: {
     allowNull: false,
