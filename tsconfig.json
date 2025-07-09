@@ -10,5 +10,6 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "resolveJsonModule": true,
+    "outDir": "./dist"
   }
 }

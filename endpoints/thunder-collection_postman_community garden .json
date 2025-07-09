@@ -1,0 +1,189 @@
+{
+    "info": {
+        "_postman_id": "5a9a65b8-ee37-4248-a75a-a2ac72fce9d8",
+        "name": "community garden ",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "POST /community-gardens (Criar Horta)",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:3000/community-gardens",
+                    "path": [
+                        "community-gardens"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2ZGQ0MDIyLWNlN2EtNDhmYS05ZGZlLTg3ZmE4YjU5ZmI3NSIsIm5hbWUiOiJTZXUgTm9tZSBDb21wbGV0byIsImVtYWlsIjoicGVkcm8zOEBnbWFpbC5jb20iLCJyb2xlIjoiZ2VzdG9yIiwiYmlydGhEYXRlIjoiMTk5NS0wNy0yMFQwMDowMDowMC4wMDBaIiwicGhvdG9VcmwiOiJodHRwczovL2V4YW1wbGUuY29tL3N1YV9mb3RvLmpwZyIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NTEwMDAxMDksImV4cCI6MTgzNzQwMDEwOX0.H2jpUrs7HtEDjwgDbG2uZ6ib5lSqN3SGJjaBlYNU-6Q"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "*/*",
+                        "disabled": true
+                    },
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n    \"name\": \"Horta do Bairro Novo\",\n    \"description\": \"Espaço verde colaborativo para a comunidade do bairro.\",\n    \"address\": \"Rua das Oliveiras, 10\",\n    \"city\": \"Petrópolis\",\n    \"state\": \"RJ\",\n    \"country\": \"Brasil\",\n    \"postalCode\": \"25685-150\",\n    \"latitude\": -22.4900,\n    \"longitude\": -43.1800,\n    \"polygon\": [\n        [\n            [-43.1810, -22.4890],\n            [-43.1790, -22.4890],\n            [-43.1790, -22.4910],\n            [-43.1810, -22.4910],\n            [-43.1810, -22.4890]\n        ]\n    ],\n    \"areaSize\": 180.25,\n    \"establishedDate\": \"2024-06-10\",\n    \"status\": \"planned\",\n    \"contactPerson\": \"16dd4022-ce7a-48fa-9dfe-87fa8b59fb75\",\n    \"photoUrl\": \"https://example.com/horta_bairro_novo.jpg\"\n}"
+                }
+            }
+        },
+        {
+            "name": "GET /community-gardens/:id (Buscar Horta por ID)",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:3000/community-gardens/3dbbf0ef-2862-4dd7-8d7c-0b61c56baab5",
+                    "path": [
+                        "community-gardens",
+                        "3dbbf0ef-2862-4dd7-8d7c-0b61c56baab5"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2ZGQ0MDIyLWNlN2EtNDhmYS05ZGZlLTg3ZmE4YjU5ZmI3NSIsIm5hbWUiOiJTZXUgTm9tZSBDb21wbGV0byIsImVtYWlsIjoicGVkcm8zOEBnbWFpbC5jb20iLCJyb2xlIjoiZ2VzdG9yIiwiYmlydGhEYXRlIjoiMTk5NS0wNy0yMFQwMDowMDowMC4wMDBaIiwicGhvdG9VcmwiOiJodHRwczovL2V4YW1wbGUuY29tL3N1YV9mb3RvLmpwZyIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NTEwMDAxMDksImV4cCI6MTgzNzQwMDEwOX0.H2jpUrs7HtEDjwgDbG2uZ6ib5lSqN3SGJjaBlYNU-6Q"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "*/*",
+                        "disabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "name": "GET /community-gardens (Listar Hortas - Token)",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:3000/community-gardens",
+                    "path": [
+                        "community-gardens"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2ZGQ0MDIyLWNlN2EtNDhmYS05ZGZlLTg3ZmE4YjU5ZmI3NSIsIm5hbWUiOiJTZXUgTm9tZSBDb21wbGV0byIsImVtYWlsIjoicGVkcm8zOEBnbWFpbC5jb20iLCJyb2xlIjoiZ2VzdG9yIiwiYmlydGhEYXRlIjoiMTk5NS0wNy0yMFQwMDowMDowMC4wMDBaIiwicGhvdG9VcmwiOiJodHRwczovL2V4YW1wbGUuY29tL3N1YV9mb3RvLmpwZyIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NTEwMDAxMDksImV4cCI6MTgzNzQwMDEwOX0.H2jpUrs7HtEDjwgDbG2uZ6ib5lSqN3SGJjaBlYNU-6Q"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "*/*",
+                        "disabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "name": "PUT /community-gardens/:id (Atualizar)",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http://localhost:3000/community-gardens/3dbbf0ef-2862-4dd7-8d7c-0b61c56baab5",
+                    "path": [
+                        "community-gardens",
+                        "3dbbf0ef-2862-4dd7-8d7c-0b61c56baab5"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2ZGQ0MDIyLWNlN2EtNDhmYS05ZGZlLTg3ZmE4YjU5ZmI3NSIsIm5hbWUiOiJTZXUgTm9tZSBDb21wbGV0byIsImVtYWlsIjoicGVkcm8zOEBnbWFpbC5jb20iLCJyb2xlIjoiZ2VzdG9yIiwiYmlydGhEYXRlIjoiMTk5NS0wNy0yMFQwMDowMDowMC4wMDBaIiwicGhvdG9VcmwiOiJodHRwczovL2V4YW1wbGUuY29tL3N1YV9mb3RvLmpwZyIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NTEwMDAxMDksImV4cCI6MTgzNzQwMDEwOX0.H2jpUrs7HtEDjwgDbG2uZ6ib5lSqN3SGJjaBlYNU-6Q"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "*/*",
+                        "disabled": true
+                    },
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n    \"name\": \"Horta do Bairro Novo - Revitalizada\",\n    \"description\": \"Espaço revitalizado com novas culturas e eventos.\",\n    \"status\": \"active\",\n    \"areaSize\": 210.00,\n    \"photoUrl\": \"https://example.com/horta_revitalizada.jpg\"\n}"
+                }
+            }
+        },
+        {
+            "name": "DEL /community-gardens/:id (Deletar Horta)",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:3000/community-gardens/3dbbf0ef-2862-4dd7-8d7c-0b61c56baab5",
+                    "path": [
+                        "community-gardens",
+                        "3dbbf0ef-2862-4dd7-8d7c-0b61c56baab5"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2ZGQ0MDIyLWNlN2EtNDhmYS05ZGZlLTg3ZmE4YjU5ZmI3NSIsIm5hbWUiOiJTZXUgTm9tZSBDb21wbGV0byIsImVtYWlsIjoicGVkcm8zOEBnbWFpbC5jb20iLCJyb2xlIjoiZ2VzdG9yIiwiYmlydGhEYXRlIjoiMTk5NS0wNy0yMFQwMDowMDowMC4wMDBaIiwicGhvdG9VcmwiOiJodHRwczovL2V4YW1wbGUuY29tL3N1YV9mb3RvLmpwZyIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3NTEwMDAxMDksImV4cCI6MTgzNzQwMDEwOX0.H2jpUrs7HtEDjwgDbG2uZ6ib5lSqN3SGJjaBlYNU-6Q"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "*/*",
+                        "disabled": true
+                    }
+                ]
+            }
+        }
+    ]
+}

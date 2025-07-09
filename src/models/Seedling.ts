@@ -1,87 +1,84 @@
 import { Model, Optional, DataTypes } from "sequelize";
 import { sequelize } from "../database";
 
-interface SeedlingAttributes {
-  ID: string;
-  REFLORESTATION_AREA_ID: string;
-  SPECIES_NAME?: string;
-  SCIENTIFIC_NAME?: string;
-  PLANTING_DATE?: Date;
-  COORDINATES?: object;
-  CURRENT_HEIGHT?: number;
-  CURRENT_STATUS?: string;
-  LAST_WATERING_DATE?: Date;
-  LAST_MAINTENANCE_DATE?: Date;
-  NOTES?: string;
-  CREATED_AT?: Date;
-  UPDATED_AT?: Date;
+export interface SeedlingAttributes {
+  id: string;
+  reforestationAreaId: string;
+  speciesName?: string;
+  scientificName?: string;
+  plantingDate?: Date;
+  coordinates?: object;
+  currentHeight?: number;
+  currentStatus?: string;
+  lastWateringDate?: Date;
+  lastMaintenanceDate?: Date;
+  notes?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-interface SeedlingCreationAttributes extends Optional<SeedlingAttributes, 'ID' | 'CREATED_AT' | 'UPDATED_AT'> {}
+export interface SeedlingCreationAttributes extends Optional<SeedlingAttributes, 'id' | 'createdAt' | 'updatedAt'> {}
 
-interface SeedlingInstance extends Model<SeedlingAttributes, SeedlingCreationAttributes>, SeedlingAttributes {
-  CREATED_AT?: Date;
-  UPDATED_AT?: Date;
-}
+export interface SeedlingInstance extends Model<SeedlingAttributes, SeedlingCreationAttributes>, SeedlingAttributes {}
 
-const Seedling = sequelize.define<SeedlingInstance>('Seedling', {
-  ID: {
+const Seedling = sequelize.define<SeedlingInstance, SeedlingAttributes>('Seedling', {
+  id: {
+    allowNull: false,
+    primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
-    primaryKey: true,
   },
-  REFLORESTATION_AREA_ID: {
+  reforestationAreaId: {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: 'REFLORESTATION_AREAS',
-      key: 'ID',
+      model: 'reforestation_areas', // Nome da tabela de áreas de reflorestamento em minúsculas
+      key: 'id',
     },
-    onDelete: 'CASCADE',
+    onDelete: 'cascade', // Se a área de reflorestamento for deletada, as mudas também serão
   },
-  SPECIES_NAME: {
+  speciesName: {
     type: DataTypes.STRING(255),
   },
-  SCIENTIFIC_NAME: {
+  scientificName: {
     type: DataTypes.STRING(255),
   },
-  PLANTING_DATE: {
+  plantingDate: {
     type: DataTypes.DATEONLY,
   },
-  COORDINATES: {
-    type: DataTypes.GEOMETRY('POINT'),
+  coordinates: {
+    type: DataTypes.GEOMETRY('point'), // Para coordenadas geográficas
   },
-  CURRENT_HEIGHT: {
+  currentHeight: {
     type: DataTypes.DECIMAL(6, 2),
   },
-  CURRENT_STATUS: {
+  currentStatus: {
     type: DataTypes.STRING(50),
   },
-  LAST_WATERING_DATE: {
+  lastWateringDate: {
     type: DataTypes.DATEONLY,
   },
-  LAST_MAINTENANCE_DATE: {
+  lastMaintenanceDate: {
     type: DataTypes.DATEONLY,
   },
-  NOTES: {
+  notes: {
     type: DataTypes.TEXT,
   },
-  CREATED_AT: {
+  createdAt: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW,
   },
-  UPDATED_AT: {
+  updatedAt: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW,
   }
 }, {
-  tableName: 'SEEDLINGS',
+  tableName: 'seedlings', // Nome da tabela em minúsculas
   timestamps: true,
-  createdAt: 'CREATED_AT',
-  updatedAt: 'UPDATED_AT',
-  // underscored: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
 });
 
 export default Seedling;
