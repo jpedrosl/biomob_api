@@ -1,4 +1,4 @@
-[README_biomob_api.md](https://github.com/user-attachments/files/29272647/README_biomob_api.md)
+[README_biomob_api.md](https://github.com/user-attachments/files/29272730/README_biomob_api.md)
 # Biomob API
 
 API REST desenvolvida para o projeto **Biomob**, uma plataforma de monitoramento geográfico voltada para o acompanhamento de áreas de desmatamento, replantio e hortas comunitárias. Projeto desenvolvido durante o programa **Serratec** (Parque Tecnológico da Região Serrana, RJ).
@@ -16,6 +16,8 @@ Atuei como responsável técnico pelo desenvolvimento do backend, incluindo arqu
 - **Express** — framework HTTP para definição de rotas e middlewares
 - **PostgreSQL** — banco de dados relacional
 - **Sequelize** — ORM para modelagem e consultas ao banco de dados
+- **JWT (JSON Web Token)** — autenticação e controle de acesso por papel (`role`)
+- **Dados geoespaciais (GeoJSON)** — armazenamento de coordenadas e polígonos de área
 - **Vercel** — plataforma de deploy
 
 ## 📁 Estrutura do projeto
@@ -32,11 +34,24 @@ biomob_api/
 
 ## 📌 Principais recursos da API
 
-> _[Complete esta seção com os recursos reais — ex: cadastro de áreas monitoradas, registro de plantios, usuários, relatórios de desmatamento, etc.]_
+### Autenticação e usuários
+- `POST /auth/register` — Cadastro de usuário, com suporte a diferentes perfis de acesso (ex: `gestor`), data de nascimento, foto de perfil e status de verificação
+- `[X]` — Login / autenticação (ex: `POST /auth/login`)
+- Controle de acesso por papel (`role`) via autenticação JWT (Bearer Token)
 
-- `[X]` — Gestão de áreas monitoradas (desmatamento, replantio, hortas comunitárias)
-- `[X]` — Cadastro e consulta de dados geográficos
-- `[X]` — Autenticação de usuários
+### Hortas comunitárias (`/community-gardens`)
+CRUD completo para gestão de hortas comunitárias, com suporte a dados geoespaciais:
+
+- `POST /community-gardens` — Cria uma nova horta, incluindo localização (latitude/longitude), polígono geográfico da área (GeoJSON), tamanho da área (m²), status (`planned`, `active`, etc.) e responsável
+- `GET /community-gardens` — Lista todas as hortas cadastradas
+- `GET /community-gardens/:id` — Busca os detalhes de uma horta específica
+- `PUT /community-gardens/:id` — Atualiza dados da horta (descrição, status, área, foto)
+- `DELETE /community-gardens/:id` — Remove o cadastro de uma horta
+
+### 🔜 Roadmap — Monitoramento de áreas (desmatamento e replantio)
+> _[Esta seção cobre os módulos de monitoramento de desmatamento e replantio — complete com os endpoints reais quando estiverem implementados/confirmados]_
+
+- `[X]` — Cadastro e consulta de áreas de desmatamento e replantio
 - `[X]` — Geração de relatórios/indicadores
 
 ## 🚀 Como executar localmente
